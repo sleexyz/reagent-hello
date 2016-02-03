@@ -1,12 +1,10 @@
 (ns hello.core
   (:require [reagent.core :as r]
-            [markdown.core :refer [md->html]]))
+            [markdown.core :refer [md->html]])
+  (:require-macros [hello.macros :refer [slurp]]))
 
 (defonce counter-state (r/atom 0))
 (defonce text-state (r/atom "#yo!\nWrite some **markdown** in me!"))
-
-(.log js/console
-      (md->html "###This is a heading\n with a p!"))
 
 (defn counter []
   [:div {:on-click #(swap! counter-state inc)}
@@ -15,10 +13,7 @@
 (defn dangerous [text]
   [:div {:dangerouslySetInnerHTML {:__html (md->html text)}}])
 
-(def text "
-  # Yo!
-  Welcome to my hello worldliness.
-")
+(def text (slurp "src/hello/poop.md"))
 
 (defn editor []
   [:div
@@ -36,7 +31,7 @@
    [:h3 "counter"]
    [counter]
    [:br] [:br] [:br] [:br]
-   [:h3 "markdown editor"]
+   [:h3 "Editor"]
    [editor]])
 
 

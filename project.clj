@@ -3,6 +3,10 @@
   :dependencies [[org.clojure/clojure "1.7.0"]
                  [org.clojure/clojurescript "1.7.228"]
                  [reagent "0.6.0-alpha"]
+                 [figwheel-sidecar "0.5.0-4"]
+                 [com.stuartsierra/component "0.3.1"]
+                 [ring "1.4.0"]
+                 [ring-jetty-component "0.3.0"]
                  [markdown-clj "0.9.85"]]
 
   :plugins [[lein-figwheel "0.5.0-1"]]
